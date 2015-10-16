@@ -1,0 +1,15 @@
+c:\users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\bin\Debug\StreetRecorder.exe.config
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\StreetRecorder.csprojResolveAssemblyReference.cache
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\MainWindow.baml
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\MainWindow.g.cs
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\App.g.cs
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\StreetRecorder_MarkupCompile.cache
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\StreetRecorder.g.resources
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\StreetRecorder.Properties.Resources.resources
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\StreetRecorder.csproj.GenerateResource.Cache
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\bin\Debug\StreetRecorder.exe
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\bin\Debug\StreetRecorder.pdb
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\bin\Debug\Microsoft.Kinect.dll
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\bin\Debug\Microsoft.Kinect.xml
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\StreetRecorder.exe
+C:\Users\nmilk_000\documents\visual studio 2013\Projects\StreetRecorder\StreetRecorder\obj\Debug\StreetRecorder.pdb
