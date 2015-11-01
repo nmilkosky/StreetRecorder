@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Kinect;
+using System.Windows.Forms;
 
 namespace StreetRecorder 
 {
@@ -17,11 +18,8 @@ namespace StreetRecorder
     {
         #region Variables
         // Variables
-        private const string BASE_FOLDER_PATH = "C:\\KinectTest\\";
-        ///<summary>The <see langword="string"/> path to the folder where the depth pictures will be stored</summary>
-        private const string DEPTH_FOLDER_PATH = BASE_FOLDER_PATH + "Depth\\";
-        ///<summary>The <see langword="string"/> path to the folder where the color pictures will be stored</summary>
-        private const string COLOR_FOLDER_PATH = BASE_FOLDER_PATH + "Color\\";
+        ///<summary>The path to the folder where the data will be stored</summary>
+        private string baseFolderPath = null;
         ///<summary>File name of the GPS log file</summary>
         private const string GPS_FILE_NAME = "GPSLog.txt";
         ///<summary>Format for the date/time in filenames and log file</summary>
@@ -90,12 +88,39 @@ namespace StreetRecorder
 
             // initialize the gps device
             gpsDevice = new GPSHandler();
+            FolderPath = "D:\\KinectTest\\";
 
             // start the kinect sensor
             kinect.Open();
 
             InitializeComponent();
         }
+
+        public String FolderPath
+        {
+            get
+            {
+                return this.baseFolderPath;
+            }
+            set
+            {
+                if (this.baseFolderPath != value)
+                {
+                    this.baseFolderPath = value;
+
+                    // notify any bound elements that the text has changed
+                    if (this.PropertyChanged != null)
+                    {
+                        this.PropertyChanged(this, new PropertyChangedEventArgs("FolderPath"));
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// INotifyPropertyChangedPropertyChanged event to allow window controls to bind to changeable data
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region FrameArrivals
@@ -263,7 +288,7 @@ namespace StreetRecorder
 
                 string time = System.DateTime.UtcNow.ToString(DATETIME_FORMAT, CultureInfo.CurrentUICulture.DateTimeFormat);
 
-                string path = Path.Combine(DEPTH_FOLDER_PATH, "Depth-" + time + ".png");
+                string path = Path.Combine(baseFolderPath, "Depth-" + time + ".png");
 
                 // write the new file to disk
                 try 
@@ -295,7 +320,7 @@ namespace StreetRecorder
 
                 string time = System.DateTime.Now.ToString(DATETIME_FORMAT, CultureInfo.CurrentUICulture.DateTimeFormat);
 
-                string path = Path.Combine(COLOR_FOLDER_PATH, "Color-" + time + ".png");
+                string path = Path.Combine(baseFolderPath, "Color-" + time + ".png");
 
                 // write the new file to disk
                 try 
@@ -318,12 +343,25 @@ namespace StreetRecorder
         private void WriteGPS()
         {
             string time = System.DateTime.Now.ToString(DATETIME_FORMAT, CultureInfo.CurrentUICulture.DateTimeFormat);
-            string path = BASE_FOLDER_PATH + GPS_FILE_NAME;
+            string path = baseFolderPath + GPS_FILE_NAME;
             double[] coords = gpsDevice.getCoords();
             System.IO.StreamWriter gpsLog = new StreamWriter(path,  true);
             gpsLog.WriteLine("Time: " + time);
             gpsLog.WriteLine("\tLatitude: " + coords[0] + " Longitude: " + coords[1]);
             gpsLog.Close();
+        }
+        #endregion
+
+        #region GUI
+        private void BrowseFolder_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.RootFolder = Environment.SpecialFolder.MyComputer;
+            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+            if(result == System.Windows.Forms.DialogResult.OK)
+            {
+                FolderPath = dialog.SelectedPath;
+            }
         }
         #endregion
     }
